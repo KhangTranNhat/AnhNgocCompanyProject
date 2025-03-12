@@ -5,3 +5,4 @@
 /AnhNgocPackaging/.vs
 /AnhNgocPackaging/bin/Debug/net9.0
 /AnhNgocPackaging/obj
+/AnhNgocPackaging/appsettings.Development.json
