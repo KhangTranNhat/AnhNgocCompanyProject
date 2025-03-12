@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RuntimeIdentifiers>linux-x64</RuntimeIdentifiers>
+    <ContainerRuntimeIdentifier>linux-x64</ContainerRuntimeIdentifier>
+    <EnableSdkContainerDebugging>True</EnableSdkContainerDebugging>
+    <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:9.0</ContainerBaseImage>
+    <UserSecretsId>c7863326-1b95-4a8a-8df5-0d9645b3d03d</UserSecretsId>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ContainerPort Include="8081" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Presentation\Admin\Authentication\" />
+    <Folder Include="Presentation\Admin\BannerManagement\" />
+    <Folder Include="Presentation\Admin\Controller\" />
+    <Folder Include="Presentation\Admin\PolicyManagement\" />
+    <Folder Include="Presentation\Admin\ProductManagement\" />
+    <Folder Include="Presentation\Client\Controller\" />
+    <Folder Include="Presentation\Client\PageOnline\Dto\Param\" />
+    <Folder Include="Presentation\Client\PageOnline\Dto\Result\" />
+    <Folder Include="Presentation\Client\PageOnline\NewFolder\" />
+    <Folder Include="Presentation\Client\ViewComponentOnlineOnline\Banner\" />
+    <Folder Include="Presentation\Client\ViewComponentOnlineOnline\Category\" />
+    <Folder Include="Presentation\Client\ViewComponentOnlineOnline\Footer\" />
+    <Folder Include="Presentation\Client\ViewComponentOnlineOnline\Header\" />
+    <Folder Include="Presentation\Client\ViewComponentOnlineOnline\Policy\" />
+    <Folder Include="Presentation\Client\ViewComponentOnlineOnline\ProductSlide\" />
+    <Folder Include="Presentation\Dto\" />
+  </ItemGroup>
+
+</Project>
