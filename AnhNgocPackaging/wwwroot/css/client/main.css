@@ -1458,7 +1458,7 @@ span {
   margin-bottom: 5px;
 }
 .contact-info-area .contact-info-items .content h3 {
-  font-size: 24px;
+  font-size: 16px;
   color: var(--white);
   text-transform: initial;
 }
@@ -3990,12 +3990,13 @@ span {
   padding-top: 216px;
   padding-bottom: 216px;
 }
-.hero-2 .book-image img {
-  position: absolute;
-  z-index: 5;
-  right: 9%;
-  bottom: 0;
-}
+    .hero-2 .book-image img {
+        position: absolute;
+        z-index: 5;
+        right: 5%;
+        bottom: 2%;
+        width: 40%;
+    }
 @media (max-width: 1399px) {
   .hero-2 .book-image img {
     display: none;

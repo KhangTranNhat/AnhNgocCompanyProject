@@ -6,9 +6,9 @@
         {
 
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public  Task<IViewComponentResult> InvokeAsync()
         {
-            return RenderViewComponent("News", "NewsGrid");
+            return Task.FromResult(RenderViewComponent("News", "NewsGrid"));
         }
     }
 }

@@ -6,9 +6,9 @@
         {
 
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public Task<IViewComponentResult> InvokeAsync(DataLayoutResultDto param)
         {
-            return RenderViewComponent("Footer", "Default");
+            return Task.FromResult(RenderViewComponent("Footer", "Default", param));
         }
     }
 }

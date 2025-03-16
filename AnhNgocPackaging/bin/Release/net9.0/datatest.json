@@ -1,0 +1,42 @@
+﻿[
+  {
+    "_id": { "$oid": "60d5f9e8fc13ae1d37000001" },
+    "parent_id": null,
+    "title": "HDPE",
+    "slug": "hdpe",
+    "image": "/uploads/category-pe.jpg",
+    "priority": 1
+  },
+  {
+    "_id": { "$oid": "60d5f9e8fc13ae1d37000002" },
+    "parent_id": null,
+    "title": "LDPE",
+    "slug": "ldpe",
+    "image": "/uploads/category-pe.jpg",
+    "priority": 1
+  },
+  {
+    "_id": { "$oid": "60d5f9e8fc13ae1d37000003" },
+    "parent_id": null,
+    "title": "OPP",
+    "slug": "opp",
+    "image": "/uploads/category-opp.jpg",
+    "priority": 1
+  },
+  {
+    "_id": { "$oid": "60d5f9e8fc13ae1d37000004" },
+    "parent_id": null,
+    "title": "PP",
+    "slug": "pp",
+    "image": "/uploads/category-pp.jpg",
+    "priority": 1
+  },
+  {
+    "_id": { "$oid": "60d5f9e8fc13ae1d37000005" },
+    "parent_id": null,
+    "title": "PE",
+    "slug": "pe",
+    "image": "/uploads/category-pe.jpg",
+    "priority": 1
+  }
+]

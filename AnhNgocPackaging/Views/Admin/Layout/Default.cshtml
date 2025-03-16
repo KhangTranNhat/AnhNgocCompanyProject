@@ -2,12 +2,53 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="POS - Bootstrap Admin Template">
+    <meta name="keywords"
+          content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern,  html5, responsive">
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dreams Pos admin template</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.jpg">
+
+    <link rel="stylesheet" href="~/css/admin/bootstrap.min.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/admin/animate.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/admin/dataTables.bootstrap4.min.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/plugins/fontawesome/css/fontawesome.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/plugins/fontawesome/css/all.min.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/admin/style.css">
 </head>
 <body>
-    <div>
+
+    <div id="global-loader">
+        <div class="whirly-loader"> </div>
+    </div>
+    <div class="main-wrapper">
+        @await Component.InvokeAsync("Header")
+        @await Component.InvokeAsync("Sidebar")
         @RenderBody()
     </div>
+
+    <script src="~/js/adminjquery-3.6.0.min.js"></script>
+
+    <script src="~/js/adminfeather.min.js"></script>
+
+    <script src="~/js/adminjquery.slimscroll.min.js"></script>
+
+    <script src="~/js/adminjquery.dataTables.min.js"></script>
+    <script src="~/js/admindataTables.bootstrap4.min.js"></script>
+
+    <script src="~/js/adminbootstrap.bundle.min.js"></script>
+
+    <script src="~/plugins/apexchart/apexcharts.min.js"></script>
+    <script src="~/plugins/apexchart/chart-data.js"></script>
+
+    <script src="~/js/adminscript.js"></script>
 </body>
 </html>

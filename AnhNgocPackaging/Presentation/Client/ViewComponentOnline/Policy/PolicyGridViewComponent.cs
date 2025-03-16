@@ -1,14 +1,17 @@
-﻿namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Policy
+﻿
+namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Policy
 {
     public class PolicyGridViewComponent : BaseClientViewComponentOnline
     {
-        public PolicyGridViewComponent()
+        private readonly IGetDataPolicyViewComponentUseCase useCase;
+        public PolicyGridViewComponent(IGetDataPolicyViewComponentUseCase useCase)
         {
-
+            this.useCase = useCase;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return RenderViewComponent("Policy", "PolicyGrid");
+            var data = await this.useCase.Execute();
+            return RenderViewComponent("Policy", "PolicyGrid", data);
         }
     }
 }

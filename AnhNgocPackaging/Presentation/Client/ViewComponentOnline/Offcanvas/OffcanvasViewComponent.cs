@@ -6,9 +6,9 @@
         {
 
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public  Task<IViewComponentResult> InvokeAsync(DataLayoutResultDto param)
         {
-            return RenderViewComponent("Offcanvas", "Default");
+            return Task.FromResult(RenderViewComponent("Offcanvas", "Default", param));
         }
     }
 }

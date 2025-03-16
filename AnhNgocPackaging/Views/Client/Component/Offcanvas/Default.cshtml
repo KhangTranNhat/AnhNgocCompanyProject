@@ -1,4 +1,9 @@
-﻿<div class="fix-area">
+﻿@model DataLayoutResultDto;
+@{
+    var contact = Model.CompanyContact;
+    var socialMedia = Model.CompanySocialMedia;
+}
+<div class="fix-area">
     <div class="offcanvas__info">
         <div class="offcanvas__wrapper">
             <div class="offcanvas__content">
@@ -27,7 +32,7 @@
                                 <i class="fal fa-map-marker-alt"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a target="_blank" href="index-2.html">29 Cao Lỗ, phường 3, Quận 8, Thành phố Hồ Chí Minh</a>
+                                <a target="_blank" href="index-2.html">@contact.PrimaryAddress</a>
                             </div>
                         </li>
                         <li class="d-flex align-items-center">
@@ -35,8 +40,8 @@
                                 <i class="fal fa-envelope"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a href="mailto:khanh.truong@anprovider.com">
-                                    <span class="mailto:khanh.truong@anprovider.com">khanh.truong@anprovider.com</span>
+                                <a href="mailto:{@contact.PrimaryEmail}">
+                                    <span class="mailto:{@contact.PrimaryEmail}">@contact.PrimaryEmail</span>
                                 </a>
                             </div>
                         </li>
@@ -53,7 +58,7 @@
                                 <i class="far fa-phone"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a href="tel:+84834561942">+84(0) 834 561 942</a>
+                                <a href="tel:@contact.PrimaryPhone.Replace(" ", "")">@contact.PrimaryPhone</a>
                             </div>
                         </li>
                     </ul>
@@ -63,10 +68,10 @@
                         </a>
                     </div>
                     <div class="social-icon d-flex align-items-center">
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="@socialMedia.Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="@socialMedia.Instagram"><i class="fab fa-twitter"></i></a>
+                        <a href="@socialMedia.YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="@socialMedia.LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>

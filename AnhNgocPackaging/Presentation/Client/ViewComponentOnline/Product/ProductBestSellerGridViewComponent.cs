@@ -6,9 +6,9 @@
         {
 
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public  Task<IViewComponentResult> InvokeAsync()
         {
-            return RenderViewComponent("Product", "ProductBestSellerGrid");
+            return Task.FromResult(RenderViewComponent("Product", "ProductBestSellerGrid"));
         }
     }
 }
