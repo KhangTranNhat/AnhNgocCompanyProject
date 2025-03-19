@@ -27,6 +27,21 @@
         public string Description { get; set; } = string.Empty;
 
         [BsonElement("content")]
-        public string Ccontent { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
+
+        [BsonElement("is_top_rating")]
+        public bool IsTopRating { get; set; }
+
+        [BsonElement("is_top_category")]
+        public bool IsTopCategory { get; set; }
+
+        [BsonElement("is_featured")]
+        public bool IsFeatured { get; set; }
+
+        [BsonElement("is_best_sellers")]
+        public bool IsBestSellers { get; set; }
+
+        [BsonElement("is_favorite")]
+        public bool IsFavorite { get; set; }
     }
 }

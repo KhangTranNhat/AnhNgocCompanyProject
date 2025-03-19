@@ -38,7 +38,7 @@ global using AnhNgocPackaging.Infrastructure.MongoDb;
 //Domain
 global using AnhNgocPackaging.Domain.Entity;
 global using AnhNgocPackaging.Domain.Constants.Component;
-
+global using AnhNgocPackaging.Domain.Constants.Product;
 //Presentation
 global using AnhNgocPackaging.Presentation.Client.Base;
 global using AnhNgocPackaging.Presentation.Admin.Base;
@@ -47,7 +47,8 @@ global using AnhNgocPackaging.Presentation.Dto.Result;
 global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Policy.Dto.Result;
 global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Banner.Dto.Result;
 global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Dto.Result;
-
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Product.Dto.Result;
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.ProductCategory.Dto.Result;
 //Application
 global using AnhNgocPackaging.Application.UseCase.ViewComponentUseCase;
 

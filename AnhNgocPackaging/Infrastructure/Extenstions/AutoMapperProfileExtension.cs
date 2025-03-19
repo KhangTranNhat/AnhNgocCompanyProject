@@ -24,6 +24,8 @@
             //Product Category
             CreateMap<ProductCategoryEntity, ProductCategoryResultDto>();
 
+            //Product Category
+            CreateMap<ProductEntity, ItemListProductResultDto>();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace AnhNgocPackaging.Infrastructure.MongoDb
         public IMongoCollection<CompanyEntity> Company => database.GetCollection<CompanyEntity>("company");
         public IMongoCollection<ProductCategoryEntity> ProductCategory => database.GetCollection<ProductCategoryEntity>("product_category");
         public IMongoCollection<ComponentConfigEntity> ComponentConfig => database.GetCollection<ComponentConfigEntity>("component_config");
+        public IMongoCollection<ProductEntity> Product => database.GetCollection<ProductEntity>("product");
         private void CreateUniqueIndex()
         {
 

@@ -2,13 +2,15 @@
 {
     public class ProductBestSellerGridViewComponent : BaseClientViewComponentOnline
     {
-        public ProductBestSellerGridViewComponent()
+        private readonly IGetDataProductViewComponentUseCase useCase;
+        public ProductBestSellerGridViewComponent(IGetDataProductViewComponentUseCase useCase)
         {
-
+            this.useCase = useCase;
         }
-        public  Task<IViewComponentResult> InvokeAsync()
+        public  async Task<IViewComponentResult> InvokeAsync()
         {
-            return Task.FromResult(RenderViewComponent("Product", "ProductBestSellerGrid"));
+            var data =await this.useCase.Execute(ProductType.BEST_SELLERS);
+            return RenderViewComponent("Product", "ProductBestSellerGrid", data);
         }
     }
 }
