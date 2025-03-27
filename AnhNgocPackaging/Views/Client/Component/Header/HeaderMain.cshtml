@@ -45,29 +45,40 @@
                                                                 @item.Name
                                                                 @if (item.Children != null && item.Children.Any())
                                                                 {
-                                                                    <i class="fas fa-angle-down"></i> 
+                                                                    <i class="fas fa-angle-down"></i>
                                                                 }
                                                             </a>
 
-                                                            @if (item.Children != null && item.Children.Any()) 
-                                                            {
-                                                                @Html.Raw(RenderCategoryTree(item.Children))
-                                                            }
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </li>
+                                                            @if (item.Children != null && item.Children.Any())
+                                                            {  
+                                                                <ul class="submenu">
 
-                                            <li>
-                                                <a asp-action="Contact" asp-controller="PageOnline">
-                                                    Liên hệ
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a asp-controller="PageOnline" asp-action="News">
-                                                    Bài viết
-                                                </a>
-                                            </li>
+                                                                @foreach (var subItem in item.Children)
+                                                                {
+                                                                <li>
+                                                                            <a style="display: flex;justify-content: space-between; align-items: center;" asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@subItem.Slug">
+                                                                                @subItem.Name
+                                                                              
+                                                                            </a>
+                                                                </li>
+                                                                }
+                                                                </ul>
+                                                            }
+                                                </li>
+                                                    }
+                                        </ul>
+                                        </li>
+
+                                        <li>
+                                            <a asp-action="Contact" asp-controller="PageOnline">
+                                                Liên hệ
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="PageOnline" asp-action="News">
+                                                Bài viết
+                                            </a>
+                                        </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -88,7 +99,7 @@
                                     {
                                         <option value="@item.Slug">
                                             @item.Name
-                                            
+
                                         </option>
 
                                         @if (@item.Children != null)
@@ -163,7 +174,7 @@
                                                 @foreach (var subItem in @item.Children)
                                                 {
                                                     <li style="padding-left: 20px;">
-                                                        <a  asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@subItem.Slug">
+                                                        <a asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@subItem.Slug">
                                                             <span> @subItem.Name</span>
                                                             <span> @subItem.TotalProduct</span>
                                                         </a>
@@ -225,7 +236,7 @@
             if (item.Children != null && item.Children.Any())
             {
                 html += " <i class='fas fa-angle-down'></i>";
-                html += RenderCategoryTree(item.Children); 
+                html += RenderCategoryTree(item.Children);
             }
 
             html += "</a></li>";
