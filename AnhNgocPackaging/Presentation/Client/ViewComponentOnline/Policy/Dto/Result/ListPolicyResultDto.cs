@@ -2,7 +2,7 @@
 {
     public class ListPolicyResultDto : PagingResponseDto
     {
-        public ComponentConfigResultDto? Config { get; set; } = null;
+        public ComponentResultDto? Config { get; set; } = null;
         public IEnumerable<ContentPolicyResultDto> Items { get; set; } = Enumerable.Empty<ContentPolicyResultDto>();
     }
     public class ContentPolicyResultDto

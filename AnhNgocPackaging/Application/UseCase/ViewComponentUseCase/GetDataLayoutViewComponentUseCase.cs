@@ -20,22 +20,12 @@ namespace AnhNgocPackaging.Application.UseCase.ViewComponentUseCase
             try
             {
                 var productCategories = await this.productCategoryCollection.Find(FilterDefinition<ProductCategoryEntity>.Empty).ToListAsync();
-                var company = await this.companyCollection
-                                  .Find(FilterDefinition<CompanyEntity>.Empty)
-                                  .Project(c => new
-                                  {
-                                      c.Info,
-                                      c.Contact,
-                                      c.SocialMedia
-                                  })
-                                  .FirstOrDefaultAsync();
+                var company = await this.companyCollection.Find(FilterDefinition<CompanyEntity>.Empty).FirstOrDefaultAsync();
               
                 var dataReturn = new DataLayoutResultDto
                 {
-                    ProductCategories = this.mapper.Map<List<ProductCategoryResultDto>>(productCategories),
-                    CompanyContact = this.mapper.Map<CompanyContactInformationResultDto>(company.Contact),
-                    CompanyInfo = this.mapper.Map<CompanyInformationResultDto>(company.Info),
-                    CompanySocialMedia = this.mapper.Map<SocialMediaResultDto>(company.SocialMedia)
+                    Company = this.mapper.Map<CompanyResultDto>(company)
+                  
                 };
                 return dataReturn;
             }

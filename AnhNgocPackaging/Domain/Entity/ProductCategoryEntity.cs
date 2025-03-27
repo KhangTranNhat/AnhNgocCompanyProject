@@ -10,8 +10,8 @@
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Parent_id { get; set; } = null;
 
-        [BsonElement("title")]
-        public string Title { get; set; } = string.Empty;
+        [BsonElement("name")]
+        public string Name { get; set; } = string.Empty;
 
         [BsonElement("slug")]
         public string Slug { get; set; } = string.Empty;
@@ -21,5 +21,8 @@
 
         [BsonElement("priority")]
         public int Priority { get; set; }
+
+        [BsonElement("total_product")]
+        public int TotalProduct { get; set; }
     }
 }

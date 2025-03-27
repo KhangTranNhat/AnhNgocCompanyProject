@@ -1,11 +1,25 @@
-﻿@inject IGetDataLayoutViewComponentUseCase usecase;
+﻿@inject IGetCompanyUseCase usecase;
+@inject IGetListProductCategoryUseCase usecase1;
 @{
-    var result = await usecase.Execute();
-    var dataHeader = new
-    {
-        CompanyContact = result.CompanyContact,
-        ProductCategories = result.ProductCategories
-    };
+    var company = await usecase.Execute();
+    var productCategories = await usecase1.Execute();
+    var dataHeader = new HeaderMainParamDto
+            {
+                Company = company,
+                ProductCategories = productCategories
+            };
+    var dataFooter = new FooterParamDto
+            {
+                Company = company,
+                ProductCategories = productCategories
+            };
+    var dataOffcanvas = new OffcanvasParamDto
+            {
+                Company = company,
+                ProductCategories = productCategories
+            };
+
+
 }
 <!DOCTYPE html>
 <html>
@@ -43,10 +57,6 @@
 
 </head>
 <body>
-
-    <!-- Cursor follower -->
-    @* <div class="cursor-follower"></div> *@
-
     <!-- Preloader Start -->
     @*<div id="preloader" class="preloader">
         <div class="animation-preloader">
@@ -77,10 +87,10 @@
     </button>
 
     <!-- Content -->
-    @await Component.InvokeAsync("Offcanvas", result)
-    @await Component.InvokeAsync("HeaderMain", result)
+    @await Component.InvokeAsync("Offcanvas", dataOffcanvas)
+    @await Component.InvokeAsync("HeaderMain", dataHeader)
     @RenderBody()
-    @await Component.InvokeAsync("Footer", result)
+    @await Component.InvokeAsync("Footer", dataFooter)
     <script type="importmap"></script>
 
     <!--<< jquery.min.js >>-->
@@ -108,6 +118,7 @@
     <script src="~/js/client/gsap.min.js"></script>
     <!--<< Main.js >>-->
     <script src="~/js/client/main.js"></script>
+    <script src="~/js/client/ajax.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

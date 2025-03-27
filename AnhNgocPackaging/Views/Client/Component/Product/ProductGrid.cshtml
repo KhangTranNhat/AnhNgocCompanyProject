@@ -1,0 +1,114 @@
+﻿@model ListProductResultDto
+@{
+    var quantity = Model.Items.Count();
+}
+@if(quantity < 1)
+{
+
+    <h2 class="" style="padding-top: 50px;">Không tìm thấy sản phẩm</h2>
+
+}
+else
+{
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" >
+            <div class="row product-container">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="shop-box-items">
+                            <div class="book-thumb center">
+                                <a asp-action="GetProductDetail" asp-controller="PageOnline" asp-route-slug="@item.Slug"><img src="@item.Image" alt="img"></a>
+                                @* 
+                           <ul class="post-box">
+                            <li>
+                                Hot
+                            </li>
+                            <li>
+                                -30%
+                            </li>
+                        </ul>
+
+                        <ul class="shop-icon d-grid justify-content-center align-items-center">
+                            <li>
+                                <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                            </li>
+                            <li>
+                                <a href="shop-cart.html">
+                                    <img class="icon" src="~/images/icon/shuffle.svg"
+                                         alt="svg-icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop-details.html"><i class="far fa-eye"></i></a>
+                            </li>
+                        </ul>
+                         *@
+                            </div>
+                            <div class="shop-content">
+                                <h3><a href="shop-details.html">@item.Name</a></h3>
+                                <ul class="price-list">
+                                    @if (!string.IsNullOrEmpty(item.FinalPrice))
+                                    {
+                                        <li>
+                                            @item.FinalPrice
+                                            <del>
+                                                @item.Price
+                                            </del>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>@item.Price</li>
+                                    }
+                                    <li>
+                                        <i class="fa-solid fa-star"></i>
+                                        3.4 (25)
+                                    </li>
+                                </ul>
+                                <div class="shop-button">
+                                    <a asp-action="ProductDetail" asp-controller="PageOnline" asp-route-slug="@item.Slug" class="theme-btn">
+                                        <i class="fa-solid fa-basket-shopping"></i> Xem chi tiết
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @{
+                var totalItems = Model.TotalCount;
+                var currentPage = Model.Page;
+                var pageSize = Model.PageSize;
+                var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            }
+
+            @if (totalPages > 1)
+            {
+                <div class="page-nav-wrap text-center wow fadeInUp" data-wow-delay=".3s">
+                    <ul>
+                        @if (currentPage > 1)
+                        {
+                            <li><a class="previous" data-page="@(currentPage - 1)" data-type="product">❮</a></li>
+                        }
+
+                        @for (int i = 1; i <= totalPages; i++)
+                        {
+                            <li>
+                                <a class="page-numbers @(i == currentPage ? " active" : "")"
+                                   data-page="@i"
+                                   data-type="product"
+                                >@i</a>
+                            </li>
+                        }
+
+                        @if (currentPage < totalPages)
+                        {
+                            <li><a class="next" data-page="@(currentPage + 1)" data-type="product">❯</a></li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+}

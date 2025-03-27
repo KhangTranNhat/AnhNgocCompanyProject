@@ -1,14 +1,22 @@
-﻿namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.News
+﻿
+namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.News
 {
     public class NewsGridViewComponent : BaseClientViewComponentOnline
     {
-        public NewsGridViewComponent()
+        private readonly IGetListNewsUseCase useCase;
+        public NewsGridViewComponent(IGetListNewsUseCase useCase)
         {
-
+            this.useCase = useCase;
         }
-        public  Task<IViewComponentResult> InvokeAsync()
+        public  async Task<IViewComponentResult> InvokeAsync()
         {
-            return Task.FromResult(RenderViewComponent("News", "NewsGrid"));
+            var param = new GetListNewsParamDto
+            {
+                Page = 1,
+                PageSize = 4
+            };
+            var data = await this.useCase.Execute(param);
+            return RenderViewComponent("News", "NewsGrid", data);
         }
     }
 }

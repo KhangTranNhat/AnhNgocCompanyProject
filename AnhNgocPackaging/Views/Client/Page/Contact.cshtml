@@ -1,0 +1,4 @@
+﻿@model CompanyResultDto;
+@await Component.InvokeAsync("BreadcumbContact")
+@await Component.InvokeAsync("Contact", Model.Contact) 
+@await Component.InvokeAsync("ContactMaps",Model.Google)

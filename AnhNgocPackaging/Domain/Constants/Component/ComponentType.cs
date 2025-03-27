@@ -5,10 +5,7 @@
         BANNER,
         BANNER_GRID,
         POLICY_GRID,
-        HEADER_PRIMARY,
-        HEADER_SECONDARY,
-        PRODUCT,
-        PRODUCT_CATEGORY,
-        FOOTER,
+        NEWS_GRID,
+        PRODUCT_TYPE,
     }
 }

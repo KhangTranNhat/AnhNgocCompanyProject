@@ -2,11 +2,7 @@
 {
     public class HeaderMainViewComponent : BaseClientViewComponentOnline
     {
-        public HeaderMainViewComponent()
-        {
-
-        }
-        public Task<IViewComponentResult> InvokeAsync(DataLayoutResultDto param)
+        public Task<IViewComponentResult> InvokeAsync(HeaderMainParamDto param)
         {
             return Task.FromResult(RenderViewComponent("Header", "HeaderMain", param));
         }

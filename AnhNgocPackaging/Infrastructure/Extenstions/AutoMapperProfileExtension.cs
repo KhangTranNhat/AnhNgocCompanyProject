@@ -4,28 +4,39 @@
     {
         public AutoMapperProfileExtension()
         {
-            //Comon
+            //Comon Map
             CreateMap<ImageModel, ImageResultDto>();
-            CreateMap<ConfigModel, ComponentConfigResultDto>();
             CreateMap<ContactModel, ContactResultDto>();
             CreateMap<SocialMediaModel, SocialMediaResultDto>();
-            CreateMap<CompanyContactModel, CompanyContactInformationResultDto>();
 
-            //Banner
+            //Banner Map
             CreateMap<BannerEntity, ContentBannerResultDto>();
 
-            //Policy
+            //Policy Map
+            CreateMap<PolicyEntity, ContentPolicyResultDto>();
             CreateMap<PolicyEntity, ContentPolicyResultDto>();
 
-            //Company
-            CreateMap<PolicyEntity, ContentPolicyResultDto>();
-            CreateMap<CompanyInfoModel, CompanyInformationResultDto>();
+            //Product Category Map
 
-            //Product Category
-            CreateMap<ProductCategoryEntity, ProductCategoryResultDto>();
+            CreateMap<ProductCategoryEntity, ItemListProductCategoryResultDto>();
 
-            //Product Category
+            //Product Map
             CreateMap<ProductEntity, ItemListProductResultDto>();
+
+            //Company Map
+            CreateMap<CompanyContactModel, CompanyContactResultDto>();
+            CreateMap<CompanyInfoModel, CompanyInfoResultDto>();
+            CreateMap<GoogleDataModel, CompanyGoogleDataResultDto>();
+            CreateMap<CompanyEntity, CompanyResultDto>();
+
+            //News
+            CreateMap<NewsEntity, ItemListNewsResultDto>();
+
+
+            //Component
+            CreateMap<ComponentEntity, ComponentResultDto>();
+            CreateMap<ConfigModel, ConfigResultDto>();
+            CreateMap<ContentModel, ContentResultDto>();
         }
     }
 }

@@ -1,9 +1,10 @@
-﻿namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Banner
+﻿
+namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Banner
 {
     public class BannerGridViewComponent : BaseClientViewComponentOnline
     {
-        private readonly IGetDataBannerGridViewComponentUseCase useCase;
-        public BannerGridViewComponent(IGetDataBannerGridViewComponentUseCase useCase)
+        private readonly IGetListBannerUseCase useCase;
+        public BannerGridViewComponent(IGetListBannerUseCase useCase)
         {
             this.useCase = useCase;
         }

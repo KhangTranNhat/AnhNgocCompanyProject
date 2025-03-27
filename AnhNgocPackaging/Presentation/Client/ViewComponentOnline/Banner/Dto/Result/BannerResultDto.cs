@@ -3,7 +3,7 @@ namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Banner.Dto.Re
 {
     public class BannerResultDto : BaseResponseDto
     {
-        public ComponentConfigResultDto? Config { get; set; } = null;
+        public ComponentResultDto? Config { get; set; } = null;
         public ContentBannerResultDto Content { get; set; } = new ContentBannerResultDto();
     }
    
