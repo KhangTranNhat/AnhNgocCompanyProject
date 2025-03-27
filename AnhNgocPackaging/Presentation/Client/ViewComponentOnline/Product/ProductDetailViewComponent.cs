@@ -7,11 +7,11 @@
         {
             this.useCase = useCase;
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public  Task<IViewComponentResult> InvokeAsync()
         {
            
             //var data = await this.useCase.Execute(null);
-            return RenderViewComponent("Product", "ProductDetail");
+            return Task.FromResult(RenderViewComponent("Product", "ProductDetail"));
         }
     }
 }

@@ -5,9 +5,9 @@
         public AboutUsViewComponent()
         {
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public  Task<IViewComponentResult> InvokeAsync()
         {
-            return RenderViewComponent("AboutUs", "Default");
+            return Task.FromResult(RenderViewComponent("AboutUs", "Default"));
         }
     }
 }
