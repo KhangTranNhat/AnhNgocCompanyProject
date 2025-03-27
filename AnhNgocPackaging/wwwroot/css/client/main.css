@@ -647,8 +647,6 @@ span {
   line-height: 65px;
   text-align: center;
   position: relative;
-  border: 2px dotted var(--white);
-  border-radius: 50%;
   font-size: 30px;
   color: var(--white);
 }
@@ -657,7 +655,7 @@ span {
   margin-bottom: 5px;
 }
 .contact-wrapper .contact-left-items .contact-info-area-2 .contact-info-items .content h3 {
-  font-size: 24px;
+  font-size: 16px;
   color: var(--white);
   text-transform: initial;
 }
@@ -3818,6 +3816,12 @@ span {
   background-color: var(--theme2);
   color: var(--white);
   border: 1px solid transparent;
+}
+
+.page-nav-wrap ul li .page-numbers.active {
+    background-color: var(--theme2);
+    color: var(--white);
+    border: 1px solid transparent;
 }
 
 .form-check-input:checked {

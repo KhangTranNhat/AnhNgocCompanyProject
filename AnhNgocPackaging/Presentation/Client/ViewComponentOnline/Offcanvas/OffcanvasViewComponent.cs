@@ -2,11 +2,7 @@
 {
     public class OffcanvasViewComponent : BaseClientViewComponentOnline
     {
-        public OffcanvasViewComponent()
-        {
-
-        }
-        public  Task<IViewComponentResult> InvokeAsync(DataLayoutResultDto param)
+        public  Task<IViewComponentResult> InvokeAsync(OffcanvasParamDto param)
         {
             return Task.FromResult(RenderViewComponent("Offcanvas", "Default", param));
         }

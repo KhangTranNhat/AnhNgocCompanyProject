@@ -2,15 +2,12 @@
 {
     public class BannerViewComponent : BaseClientViewComponentOnline
     {
-        private readonly IGetDataBannerViewComponentUseCase useCase;
-        public BannerViewComponent(IGetDataBannerViewComponentUseCase useCase)
+        public BannerViewComponent()
         {
-            this.useCase = useCase;
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public Task<IViewComponentResult> InvokeAsync(ComponentResultDto param)
         {
-            var data = await this.useCase.Execute();
-            return RenderViewComponent("Banner", "Banner", data);
+            return Task.FromResult(RenderViewComponent("Banner", "Banner", param));
         }
     }
 }

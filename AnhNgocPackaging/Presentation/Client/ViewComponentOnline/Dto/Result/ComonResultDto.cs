@@ -7,7 +7,7 @@
         public List<string> Shapes { get; set; } = new List<string>();
     }
 
-    public class ContactResultDto
+    public class ContactResultDto : BaseResponseDto
     {
         // Phone
         public string PrimaryPhone { get; set; } = string.Empty;

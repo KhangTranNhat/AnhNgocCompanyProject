@@ -47,7 +47,6 @@
         [BsonElement("instagram")]
         public string Instagram { get; set; } = string.Empty;
     }
-
     public class ImageModel
     {
         [BsonElement("background")]

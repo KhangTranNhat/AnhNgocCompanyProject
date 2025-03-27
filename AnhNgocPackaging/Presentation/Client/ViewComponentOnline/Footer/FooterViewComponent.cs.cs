@@ -1,12 +1,9 @@
-﻿namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Footer
+﻿
+namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Footer
 {
     public class FooterViewComponent : BaseClientViewComponentOnline
     {
-        public FooterViewComponent()
-        {
-
-        }
-        public Task<IViewComponentResult> InvokeAsync(DataLayoutResultDto param)
+        public Task<IViewComponentResult> InvokeAsync(FooterParamDto param)
         {
             return Task.FromResult(RenderViewComponent("Footer", "Default", param));
         }

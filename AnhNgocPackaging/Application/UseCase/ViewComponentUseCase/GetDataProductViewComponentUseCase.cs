@@ -19,27 +19,27 @@ namespace AnhNgocPackaging.Application.UseCase.ViewComponentUseCase
 
                 var filter = Builders<ProductEntity>.Filter.Empty;
 
-                switch (param)
-                {
-                    case ProductType.BEST_SELLERS:
-                        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsBestSellers, true);
-                        break;
+                //switch (param)
+                //{
+                //    case ProductType.BEST_SELLERS:
+                //        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsBestSellers, true);
+                //        break;
 
-                    case ProductType.TOP_RATING:
-                        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsTopRating, true);
-                        break;
+                //    case ProductType.TOP_RATING:
+                //        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsTopRating, true);
+                //        break;
 
-                    case ProductType.FEATURED:
-                        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsFeatured, true);
-                        break;
+                //    case ProductType.FEATURED:
+                //        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsFeatured, true);
+                //        break;
 
-                    case ProductType.FAVORITE:
-                        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsFavorite, true);
-                        break;
+                //    case ProductType.FAVORITE:
+                //        filter = Builders<ProductEntity>.Filter.Eq(x => x.IsFavorite, true);
+                //        break;
 
-                    default:
-                        throw new ArgumentException("Loại sản phẩm không hợp lệ.");
-                }
+                //    default:
+                //        throw new ArgumentException("Loại sản phẩm không hợp lệ.");
+                //}
 
                 var products = await this.collection.Find(filter).ToListAsync();
                 var dataReturn = new ListProductResultDto

@@ -13,5 +13,10 @@
         {
             return source.Skip(skip).Take(limit);
         }
+
+        public static IFindFluent<TSource, TSource> Paging<TSource>(this IFindFluent<TSource, TSource> source, int page = 1, int pageSize = 10)
+        {
+            return source.Skip((page - 1) * pageSize).Limit(pageSize);
+        }
     }
 }

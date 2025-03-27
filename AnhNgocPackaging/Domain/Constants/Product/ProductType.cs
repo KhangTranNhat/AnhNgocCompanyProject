@@ -2,10 +2,10 @@
 {
     public enum ProductType
     {
-        TOP_CATEGORY,
-        BEST_SELLERS,
-        TOP_RATING,
-        FEATURED,
-        FAVORITE,
+      TYPE_1,
+      TYPE_2,
+      TYPE_3,
+      TYPE_4,
+      TYPE_5,
     }
 }

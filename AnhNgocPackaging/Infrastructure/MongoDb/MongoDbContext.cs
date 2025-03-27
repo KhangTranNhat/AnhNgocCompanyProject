@@ -14,17 +14,22 @@ namespace AnhNgocPackaging.Infrastructure.MongoDb
             database = client.GetDatabase(databaseName);
             CreateUniqueIndex();
         }
-        public IMongoCollection<PolicyEntity> Policy => database.GetCollection<PolicyEntity>("policy");
-        public IMongoCollection<BannerEntity> Banner => database.GetCollection<BannerEntity>("banner");
+        public IMongoCollection<PolicyEntity> Policy => database.GetCollection<PolicyEntity>("policies");
+        public IMongoCollection<BannerEntity> Banner => database.GetCollection<BannerEntity>("banners");
         public IMongoCollection<CompanyEntity> Company => database.GetCollection<CompanyEntity>("company");
-        public IMongoCollection<ProductCategoryEntity> ProductCategory => database.GetCollection<ProductCategoryEntity>("product_category");
-        public IMongoCollection<ComponentConfigEntity> ComponentConfig => database.GetCollection<ComponentConfigEntity>("component_config");
-        public IMongoCollection<ProductEntity> Product => database.GetCollection<ProductEntity>("product");
+        public IMongoCollection<ProductCategoryEntity> ProductCategory => database.GetCollection<ProductCategoryEntity>("product_categories");
+        public IMongoCollection<ProductEntity> Product => database.GetCollection<ProductEntity>("products");
+        public IMongoCollection<NewsEntity> News => database.GetCollection<NewsEntity>("news");
+        public IMongoCollection<ComponentEntity> Component => database.GetCollection<ComponentEntity>("components");
         private void CreateUniqueIndex()
         {
+            var indexProductKeys = Builders<ProductEntity>.IndexKeys.Text(p => p.Name);
+            var indexProductModel = new CreateIndexModel<ProductEntity>(indexProductKeys);
+            Product.Indexes.CreateOne(indexProductModel);
 
-
-
+            var indexNewsKeys = Builders<NewsEntity>.IndexKeys.Text(p => p.Title);
+            var indexNewsModel = new CreateIndexModel<NewsEntity>(indexNewsKeys);
+            News.Indexes.CreateOne(indexNewsModel);
         }
 
     }

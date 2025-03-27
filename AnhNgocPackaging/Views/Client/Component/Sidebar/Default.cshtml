@@ -1,0 +1,236 @@
+﻿@model ListProductCategoryResultDto
+<div class="col-xl-3 col-lg-4 order-2 order-md-1 wow fadeInUp" data-wow-delay=".3s">
+    <div class="main-sidebar">
+        <div class="single-sidebar-widget">
+            <div class="wid-title">
+                <h5>Tìm kiếm</h5>
+            </div>
+            <form  class="search-toggle-box">
+                <div class="input-area search-container">
+                    <input  class="search-input" type="text" placeholder="Tìm kiếm...">
+                    <button class="cmn-btn search-icon">
+                        <i class="far fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="single-sidebar-widget">
+            <div class="wid-title">
+                <h5>Danh mục sản phẩm</h5>
+            </div>
+            <div class="categories-list">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @{
+                        var categorySlug = Context.Request.Query["danh-muc"]; 
+                    }
+                    @foreach (var item in Model.Items)
+                    {
+                        <li class="nav-item">
+                            <button data-category="@item.Slug" class="nav-link product-category-btn @(item.Slug == categorySlug ? "active" : "")">
+                                @item.Name
+                                @if (item.Children != null && item.Children.Any())
+                                {
+                                    <i class="fas fa-angle-down"></i> 
+                                }
+                            </button>
+
+                            @if (item.Children != null && item.Children.Any())
+                            {
+                                <ul class="submenu">
+                                    @foreach (var child in item.Children)
+                                    {
+                                        <li style="padding-left: 20px;">
+                                            <button  data-category="@child.Slug" class="nav-link product-category-btn">
+                                                @child.Name
+                                            </button>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+     @*   <div class="single-sidebar-widget">
+            <div class="wid-title">
+                <h5>Product Status</h5>
+            </div>
+            <div class="product-status">
+                <div class="product-status_stock  gap-6 d-flex align-items-center">
+                    <div class="nice-select category" tabindex="0">
+                        <span class="current">
+                            In Stock
+                        </span>
+                        <ul class="list">
+                            <li data-value="1" class="option selected">
+                                In Stock
+                            </li>
+                            <li data-value="1" class="option">
+                                Castle In The Sky
+                            </li>
+                            <li data-value="1" class="option">
+                                The Hidden Mystery Behind
+                            </li>
+                            <li data-value="1" class="option">
+                                Flovely And Unicom Erna
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-status_sale gap-6 d-flex align-items-center">
+                    <div class="nice-select category" tabindex="0">
+                        <span class="current">
+                            On Sale
+                        </span>
+                        <ul class="list">
+                            <li data-value="1" class="option selected">
+                                On Sale
+                            </li>
+                            <li data-value="1" class="option">
+                                Flovely And Unicom Erna
+                            </li>
+                            <li data-value="1" class="option">
+                                Castle In The Sky
+                            </li>
+                            <li data-value="1" class="option">
+                                How Deal With Very Bad BOOK
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
+        @* <div class="single-sidebar-widget mb-50">
+            <div class="wid-title">
+                <h5>Lọc theo giá</h5>
+            </div>
+            <div class="range__barcustom">
+                <div class="slider">
+                    <div class="progress" style="left: 15.29%; right: 58.9%;"></div>
+                </div>
+                <div class="range-input">
+                    <input type="range" class="range-min" min="0" max="10000000" value="0">
+                    <input type="range" class="range-max" min="100" max="10000000" value="100000">
+                </div>
+                <div class="range-items">
+                    <div class="price-input">
+                        <div class="d-flex align-items-center">
+                            <a href="shop-left-sidebar.html" class="filter-btn mt-2 me-3">Filter</a>
+                            <div class="field">
+                                <span>Price:</span>
+                            </div>
+                            <div class="field">
+                                <input type="number" class="input-min" value="0">
+                            </div>
+                            <div class="separators">-</div>
+                            <div class="field">
+                                <input type="number" class="input-max" value="10000">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        @*<div class="single-sidebar-widget mb-0">
+            <div class="wid-title">
+                <h5>By Review</h5>
+            </div>
+            <div class="categories-list">
+                <label class="checkbox-single d-flex align-items-center">
+                    <span class="d-flex gap-xl-3 gap-2 align-items-center">
+                        <span class="checkbox-area d-center">
+                            <input type="checkbox">
+                            <span class="checkmark d-center"></span>
+                        </span>
+                        <span class="text-color">
+                            <span class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                            35
+                        </span>
+                    </span>
+                </label>
+                <label class="checkbox-single d-flex align-items-center">
+                    <span class="d-flex gap-xl-3 gap-2 align-items-center">
+                        <span class="checkbox-area d-center">
+                            <input type="checkbox">
+                            <span class="checkmark d-center"></span>
+                        </span>
+                        <span class="text-color">
+                            <span class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                            </span>
+                            24
+                        </span>
+                    </span>
+                </label>
+                <label class="checkbox-single d-flex align-items-center">
+                    <span class="d-flex gap-xl-3 gap-2 align-items-center">
+                        <span class="checkbox-area d-center">
+                            <input type="checkbox">
+                            <span class="checkmark d-center"></span>
+                        </span>
+                        <span class="text-color">
+                            <span class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                            </span>
+                            15
+                        </span>
+                    </span>
+                </label>
+                <label class="checkbox-single d-flex align-items-center">
+                    <span class="d-flex gap-xl-3 gap-2 align-items-center">
+                        <span class="checkbox-area d-center">
+                            <input type="checkbox">
+                            <span class="checkmark d-center"></span>
+                        </span>
+                        <span class="text-color">
+                            <span class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                            </span>
+                            2
+                        </span>
+                    </span>
+                </label>
+                <label class="checkbox-single d-flex align-items-center">
+                    <span class="d-flex gap-xl-3 gap-2 align-items-center">
+                        <span class="checkbox-area d-center">
+                            <input type="checkbox">
+                            <span class="checkmark d-center"></span>
+                        </span>
+                        <span class="text-color">
+                            <span class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                                <i class="fa-sharp fa-light fa-star"></i>
+                            </span>
+                            1
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>*@
+    </div>
+</div>

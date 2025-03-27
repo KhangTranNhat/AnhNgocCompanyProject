@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\UseCase\PageOnline\" />
+    <Folder Include="Presentation\Client\PageOnline\NewFolder1\" />
     <Folder Include="Views\Admin\Component\ProductCategory\" />
   </ItemGroup>
 

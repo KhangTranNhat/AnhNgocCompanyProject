@@ -1,8 +1,9 @@
-﻿@model DataLayoutResultDto;
+﻿@model FooterParamDto;
 @{
-    var contact = Model.CompanyContact;
-    var socialMedia = Model.CompanySocialMedia;
-    var productCategory = Model.ProductCategories;
+    var contact = Model.Company.Contact;
+    var socialMedia = contact.SocialMedia;
+    var productCategory = Model.ProductCategories.Items;
+    var logo = Model.Company.Info.SecondaryLogo;
 }
 <footer class="footer-section footer-bg">
     <div class="container">
@@ -14,7 +15,7 @@
                 <div class="content">
                     <p>Hotline</p>
                     <h3>
-                        <a href="tel:@contact.PrimaryPhone">@contact.PrimaryPhone</a>
+                        <a href="tel:@contact.PrimaryPhone.Replace(" ","")">@contact.PrimaryPhone</a>
                     </h3>
                 </div>
             </div>
@@ -36,7 +37,7 @@
                 <div class="content">
                     <p>Thời gian làm việc</p>
                     <h3>
-                        T2 - CN, 8h - 18h
+                        @contact.OpeningHourWorking
                     </h3>
                 </div>
             </div>
@@ -62,8 +63,8 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <a href="index.html">
-                                <img src="~/images/logo/white-logo.svg" alt="logo-img">
+                            <a asp-controller="PageOnline" asp-action="Home">
+                                <img src="@logo" alt="logo-img">
                             </a>
                         </div>
                         <div class="footer-content">
@@ -86,25 +87,25 @@
                         </div>
                         <ul class="list-area">
                             <li>
-                                <a href="">
+                                <a asp-controller="PageOnline" asp-action="Home">
                                     <i class="fa-solid fa-chevrons-right"></i>
                                     Trang chủ
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a asp-controller="PageOnline" asp-action="AboutUs">
                                     <i class="fa-solid fa-chevrons-right"></i>
                                     Giới thiệu
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a asp-controller="PageOnline" asp-action="Contact">
                                     <i class="fa-solid fa-chevrons-right"></i>
                                     Liên hệ
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a asp-controller="PageOnline" asp-action="News">
                                     <i class="fa-solid fa-chevrons-right"></i>
                                     Bài viết
                                 </a>
@@ -115,15 +116,15 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".6s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <h3>Danh mục bao bì</h3>
+                            <h3>Danh mục sản phẩm</h3>
                         </div>
                         <ul class="list-area">
                             @foreach (var item in productCategory)
                             {
                                 <li>
-                                    <a href="@item.Slug">
+                                    <a asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@item.Slug">
                                         <i class="fa-solid fa-chevrons-right"></i>
-                                        @item.Title
+                                        @item.Name
                                     </a>
                                 </li>
                             }
@@ -155,28 +156,6 @@
                 <p class="wow fadeInLeft" data-wow-delay=".3s">
                     © All Copyright 2025 by <a href="index.html">Kieran</a>
                 </p>
-               @* <ul class="brand-logo wow fadeInRight" data-wow-delay=".5s">
-                    <li>
-                        <a href="contact.html">
-                            <img src="~/images/visa-logo.png" alt="img">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">
-                            <img src="~/images/mastercard.png" alt="img">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">
-                            <img src="~/images/payoneer.png" alt="img">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">
-                            <img src="~/images/affirm.png" alt="img">
-                        </a>
-                    </li>
-                </ul> *@
             </div>
         </div>
     </div>

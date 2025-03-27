@@ -7,12 +7,10 @@ namespace AnhNgocPackaging.Application.UseCase.ViewComponentUseCase
     {
         private readonly IMapper mapper;
         private readonly IMongoCollection<BannerEntity> bannersCollection;
-        private readonly IMongoCollection<ComponentConfigEntity> componentConfigCollection;
         public GetDataBannerViewComponentUseCase(IMapper mapper, MongoDbContext context)
         {
             this.mapper = mapper;
             this.bannersCollection = context.Banner;
-            this.componentConfigCollection = context.ComponentConfig;
         }
         public async Task<BannerResultDto> Execute()
         {

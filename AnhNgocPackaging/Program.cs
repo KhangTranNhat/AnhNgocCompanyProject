@@ -1,4 +1,5 @@
-﻿namespace AnhNgocPackaging
+﻿
+namespace AnhNgocPackaging
 {
     public class Program
     {
@@ -26,21 +27,12 @@
             builder.Services.AddSingleton<IMongoClient>(s =>
                 new MongoClient()
             );
-
-
-            builder.Services.AddResponseCompression(options =>
-            {
-                options.EnableForHttps = true;
-            });
             builder.Services.AddWebOptimizer(pipeline =>
             {
-                pipeline.AddFiles("text/javascript", "/dist/*");
-                pipeline.AddFiles("text/css", "/css/client/*");
-                pipeline.AddFiles("text/javascript", "/js/client/*");
+                pipeline.AddFiles("text/css", "/css/**/*.css"); 
+                pipeline.AddFiles("text/javascript", "/{js,lib,plugins}/**/*.js");
             });
-
             var app = builder.Build();
-
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -50,9 +42,8 @@
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseResponseCompression();
+            //app.UseResponseCompression();
             app.UseAuthorization();
-
             app.UseWebOptimizer();
             app.UseStaticFiles();
 

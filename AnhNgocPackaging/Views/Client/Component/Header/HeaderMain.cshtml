@@ -1,7 +1,8 @@
-﻿@model DataLayoutResultDto;
+﻿@model HeaderMainParamDto;
 @{
-    var productCategory = Model.ProductCategories;
-    var contact = Model.CompanyContact;
+    var productCategory = Model.ProductCategories.Items;
+    var phone = Model.Company.Contact.PrimaryPhone;
+    var logo = Model.Company.Info.PrimaryLogo;
 }
 
 @* Header Sticky *@
@@ -13,8 +14,8 @@
                     <div class="col-6 col-xl-9">
                         <div class="header-left">
                             <div class="logo">
-                                <a href="index.html" class="header-logo">
-                                    <img src="~/images/logo/black-logo.svg" alt="logo-img">
+                                <a asp-action="Home" asp-controller="PageOnline" class="header-logo">
+                                    <img src="@logo" alt="logo-img">
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
@@ -22,35 +23,48 @@
                                     <nav id="mobile-menu">
                                         <ul>
                                             <li>
-                                                <a href="index.html">
+                                                <a asp-controller="PageOnline" asp-action="Home">
                                                     Trang chủ
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="index.html">
+                                                <a asp-controller="PageOnline" asp-action="AboutUs">
                                                     Giới thiệu
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="shop.html">
+                                                <a asp-controller="PageOnline" asp-action="Product">
                                                     Sản phẩm
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <ul class="submenu">
                                                     @foreach (var item in productCategory)
                                                     {
-                                                        <li><a href="@item.Slug">@item.Title</a></li>
+                                                        <li>
+                                                            <a style="display: flex;justify-content: space-between; align-items: center;" asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@item.Slug">
+                                                                @item.Name
+                                                                @if (item.Children != null && item.Children.Any())
+                                                                {
+                                                                    <i class="fas fa-angle-down"></i> 
+                                                                }
+                                                            </a>
+
+                                                            @if (item.Children != null && item.Children.Any()) 
+                                                            {
+                                                                @Html.Raw(RenderCategoryTree(item.Children))
+                                                            }
+                                                        </li>
                                                     }
                                                 </ul>
                                             </li>
 
                                             <li>
-                                                <a href="news.html">
+                                                <a asp-action="Contact" asp-controller="PageOnline">
                                                     Liên hệ
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="news.html">
+                                                <a asp-controller="PageOnline" asp-action="News">
                                                     Bài viết
                                                 </a>
                                             </li>
@@ -73,8 +87,19 @@
                                     @foreach (var item in productCategory)
                                     {
                                         <option value="@item.Slug">
-                                            @item.Title
+                                            @item.Name
+                                            
                                         </option>
+
+                                        @if (@item.Children != null)
+                                        {
+                                            @foreach (var subItem in @item.Children)
+                                            {
+                                                <option value="@subItem.Slug">
+                                                    @subItem.Name
+                                                </option>
+                                            }
+                                        }
                                     }
                                 </select>
                                 <form action="#" class="search-toggle-box d-md-block">
@@ -110,8 +135,8 @@
     <div class="container">
         <div class="header-2-wrapper">
             <div class="header-top-logo">
-                <a href="index.html">
-                    <img src="~/images/logo/black-logo.svg" alt="img">
+                <a asp-action="Home" asp-controller="PageOnline">
+                    <img src="@logo" alt="img">
                 </a>
             </div>
             <div class="header-2-right">
@@ -128,11 +153,23 @@
                                         @foreach (var item in productCategory)
                                         {
                                             <li>
-                                                <a href="@item.Slug">
-                                                    <span> @item.Title</span>
+                                                <a asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@item.Slug">
+                                                    <span> @item.Name</span>
                                                     <span> @item.TotalProduct</span>
                                                 </a>
                                             </li>
+                                            @if (@item.Children != null)
+                                            {
+                                                @foreach (var subItem in @item.Children)
+                                                {
+                                                    <li style="padding-left: 20px;">
+                                                        <a  asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@subItem.Slug">
+                                                            <span> @subItem.Name</span>
+                                                            <span> @subItem.TotalProduct</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
                                         }
                                     </ul>
                                 </nav>
@@ -155,12 +192,11 @@
                     <div class="content">
                         <span>Liên hệ ngay</span>
                         <h5>
-                            <a href="tel:@contact.PrimaryPhone.Replace(" ", "")">@contact.PrimaryPhone</a>
+                            <a href="tel:@phone.Replace(" ", "")">@phone</a>
                         </h5>
                     </div>
                 </div>
                 <div class="menu-cart">
-
                     <div class="header-humbager ml-30">
                         <a class="sidebar__toggle" href="javascript:void(0)">
                             <div class="bar-icon-2">
@@ -173,3 +209,29 @@
         </div>
     </div>
 </div>
+
+
+@functions {
+    string RenderCategoryTree(IEnumerable<ItemListProductCategoryResultDto> categories)
+    {
+        if (categories == null || !categories.Any()) return string.Empty;
+
+        var html = "<ul class='submenu'>";
+        foreach (var item in categories)
+        {
+            html += $"<li><a asp-controller='PageOnline' asp-action='Product' asp-route-danh-muc='{item.Slug}'>";
+            html += $"{item.Name}";
+
+            if (item.Children != null && item.Children.Any())
+            {
+                html += " <i class='fas fa-angle-down'></i>";
+                html += RenderCategoryTree(item.Children); 
+            }
+
+            html += "</a></li>";
+        }
+        html += "</ul>";
+
+        return html;
+    }
+}

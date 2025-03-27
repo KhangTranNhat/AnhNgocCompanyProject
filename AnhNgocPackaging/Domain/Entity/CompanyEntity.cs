@@ -10,40 +10,44 @@
         [BsonElement("contact")]
         public CompanyContactModel Contact { get; set; } = new CompanyContactModel();
 
-        [BsonElement("employee_contacts")]
-        public List<EmployeeContactInfoModel> EmployeeContacts { get; set; } = new List<EmployeeContactInfoModel>();
+        [BsonElement("google")]
+        public GoogleDataModel Google { get; set; } = new GoogleDataModel();
 
         [BsonElement("info")]
         public CompanyInfoModel Info { get; set; } = new CompanyInfoModel();
-
-        [BsonElement("social_media")]
-        public SocialMediaModel SocialMedia { get; set; } = new SocialMediaModel();
-
-        [BsonElement("opening_hour_working")]
-        public string OpeningHourWorking { get; set; } = string.Empty;
-
-
     }
 
     public class CompanyContactModel : ContactModel
     {
         [BsonElement("description")]
         public string Description { get; set; } = string.Empty;
-    }
 
-    public class EmployeeContactInfoModel : ContactModel
-    {
-        [BsonElement("full_name")]
-        public string FullName { get; set; } = string.Empty;
-
-        [BsonElement("position")]
-        public string Position { get; set; } = string.Empty;
-
-        [BsonElement("avatar")]
-        public string Avatar { get; set; } = string.Empty;
+        [BsonElement("opening_hour_working")]
+        public string OpeningHourWorking { get; set; } = string.Empty;
 
         [BsonElement("social_media")]
         public SocialMediaModel SocialMedia { get; set; } = new SocialMediaModel();
+    }
+
+    public class GoogleDataModel
+    {
+        [BsonElement("title")]
+        public string Title { get; set; } = string.Empty;
+
+        [BsonElement("description")]
+        public string Description { get; set; } = string.Empty;
+
+        [BsonElement("keyword")]
+        public string Keyword { get; set; } = string.Empty;
+
+        [BsonElement("map")]
+        public string Map { get; set; } = string.Empty;
+
+        [BsonElement("analytics")]
+        public string Analytics { get; set; } = string.Empty;
+
+        [BsonElement("site_verification")]
+        public string SiteVerification { get; set; } = string.Empty;
     }
 
     public class CompanyInfoModel
@@ -60,13 +64,6 @@
         [BsonElement("favicon")]
         public string Favicon { get; set; } = string.Empty;
 
-        [BsonElement("image")]
-        public ImageModel Image { get; set; } = new ImageModel();
-
-        [BsonElement("description")]
-        public string Description { get; set; } = string.Empty;
-
-        [BsonElement("content")]
-        public string Content { get; set; } = string.Empty;
+     
     }
 }

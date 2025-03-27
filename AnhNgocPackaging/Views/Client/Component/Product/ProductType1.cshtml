@@ -1,0 +1,88 @@
+﻿@model ListProductResultDto;
+@{
+
+}
+
+<section class="shop-section section-padding fix pt-0">
+    <div class="container">
+        <div class="section-title-area">
+            <div class="section-title">
+                <h2 class="wow fadeInUp" data-wow-delay=".3s">Top Category Books</h2>
+            </div>
+            <a href="shop.html" class="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s">
+                Explore More <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+        </div>
+        <div class="swiper book-slider">
+            <div class="swiper-wrapper">
+                @foreach(var item in Model.Items)
+                {
+                    <div class="swiper-slide">
+                        <div class="shop-box-items style-2">
+                            <div class="book-thumb center">
+                                <a asp-action="ProductDetail" asp-controller="PageOnline" asp-route-slug="@item.Slug"><img src="@item.Image" alt="img"></a>
+                                @*  <ul class="post-box">
+                                    <li>
+                                        Hot
+                                    </li>
+                                    <li>
+                                        -30%
+                                    </li>
+                                </ul>
+                                <ul class="shop-icon d-grid justify-content-center align-items-center">
+                                    <li>
+                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-cart.html">
+                                            <img class="icon" src="~/images/icon/shuffle.svg" alt="svg-icon">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-details.html"><i class="far fa-eye"></i></a>
+                                    </li>
+                                </ul>*@
+                                <div class="shop-button">
+                                    <a asp-action="ProductDetail" asp-controller="PageOnline" asp-route-slug="@item.Slug" class="theme-btn">
+                                        <i class="fa-solid fa-basket-shopping"></i> Xem chi tiết
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="shop-content">
+                                <h5> @item.ProductCategoryName </h5>
+                                <h3><a asp-action="ProductDetail" asp-controller="PageOnline" asp-route-slug="@item.Slug">@item.Name</a></h3>
+                                <ul class="price-list">
+                                    @if (!string.IsNullOrEmpty(item.FinalPrice))
+                                    {
+                                        <li>@item.FinalPrice</li>
+                                        <li>
+                                            <del>@item.Price</del>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>@item.Price</li>
+                                    }
+
+                                </ul>
+                               @* <ul class="author-post">
+                                    <li class="authot-list">
+                                        <span class="thumb">
+                                            <img src="@item.Image" alt="img">
+                                        </span>
+                                        <span class="content">Wilson</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-star"></i>
+                                        3.4 (25)
+                                    </li>
+                                </ul*@
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</section>

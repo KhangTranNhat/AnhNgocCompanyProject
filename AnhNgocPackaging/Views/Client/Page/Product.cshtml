@@ -1,0 +1,46 @@
+﻿@model GetListProductParamDto
+@await Component.InvokeAsync("BreadcumbProduct")
+<section class="shop-section fix section-padding">
+    <div class="container">
+        <div class="shop-default-wrapper">
+            <div class="row">
+                @await Component.InvokeAsync("Sidebar")
+                <div class="col-12">
+                    <div class="woocommerce-notices-wrapper wow fadeInUp" data-wow-delay=".3s">
+                        <p></p>
+                        <div class="form-clt">
+                            <div class="nice-select" tabindex="0">
+                                <span class="current">
+                                    Sắp xếp theo
+                                </span>
+                                <ul class="list">
+                                    <li data-value="1" class="option selected focus">
+                                        Giá tăng dần
+                                    </li>
+                                    <li data-value="1" class="option">
+                                        Giá giảm dần
+                                    </li>
+                                    <li data-value="1" class="option">
+                                        Mới nhất
+                                    </li>
+                                    <li data-value="1" class="option">
+                                        Cũ nhất
+                                    </li>
+                                </ul>
+                            </div>
+                          @*  <div class="icon">
+                                <a href="shop-list.html"><i class="fas fa-list"></i></a>
+                            </div>
+                            <div class="icon-2 active">
+                                <a href="shop.html"><i class="fa-sharp fa-regular fa-grid-2"></i></a>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-8 order-1 order-md-2">
+                    @await Component.InvokeAsync("ProductGrid", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

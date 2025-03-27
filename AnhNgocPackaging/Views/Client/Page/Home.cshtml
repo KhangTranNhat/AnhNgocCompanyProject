@@ -1,9 +1,12 @@
-﻿@await Component.InvokeAsync("Banner")
-@await Component.InvokeAsync("BannerGrid")
-@await Component.InvokeAsync("ProductTopCategorySlider")
-@await Component.InvokeAsync("ProductFeaturedSlider")
-@await Component.InvokeAsync("ProductBestSellerGrid")
-@await Component.InvokeAsync("ProductTopRatingGrid")
-@await Component.InvokeAsync("ProductFavoriteSlider")
-@await Component.InvokeAsync("PolicyGrid")
-@await Component.InvokeAsync("NewsGrid")
+﻿@model ListComponentResultDto;
+@{
+    var list = Model.Items?.OrderBy(x => x.Priorty).ToList() ;
+}
+
+@if (@list != null && @list.Count() > 0)
+{
+    @foreach (var item in list)
+    {
+        @await Component.InvokeAsync(item.ComponentName, item)
+    }
+}

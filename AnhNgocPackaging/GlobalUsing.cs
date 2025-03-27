@@ -49,6 +49,17 @@ global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Banner.Dto
 global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Dto.Result;
 global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Product.Dto.Result;
 global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.ProductCategory.Dto.Result;
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Footer.Dto.Param;
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Header.Dto.Param;
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Offcanvas.Dto.Param;
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.News.Dto.Result;
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.News.Dto.Param;
+global using AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Product.Dto.Param;
 //Application
 global using AnhNgocPackaging.Application.UseCase.ViewComponentUseCase;
-
+global using AnhNgocPackaging.Application.UseCase.News;
+global using AnhNgocPackaging.Application.UseCase.Products;
+global using AnhNgocPackaging.Application.UseCase.Company;
+global using AnhNgocPackaging.Application.UseCase.ProductCategory;
+global using AnhNgocPackaging.Application.UseCase.Component;
+global using AnhNgocPackaging.Application.UseCase.Banner;
