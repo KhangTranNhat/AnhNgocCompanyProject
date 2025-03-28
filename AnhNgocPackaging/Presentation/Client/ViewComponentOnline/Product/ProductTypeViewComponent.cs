@@ -9,29 +9,15 @@
         }
         public  async Task<IViewComponentResult> InvokeAsync(ComponentResultDto param)
         {
-            var type = (int)param.Extra["type"];
-            var paramProduct = new GetListProductParamDto();
-            switch (type)
-            {
-                case 1:
-                    paramProduct.Type = ProductType.TYPE_1;
-                    break;
-                case 2:
-                    paramProduct.Type = ProductType.TYPE_2;
-                    break;
-                case 3:
-                    paramProduct.Type = ProductType.TYPE_3;
-                    break;
-                case 4:
-                    paramProduct.Type = ProductType.TYPE_4;
-                    break;
-                case 5:
-                    paramProduct.Type = ProductType.TYPE_5;
-                    break;
-            }
+            var componentView = param.Extra["component_view"] as string;
+            var productCategorySlug = param.Extra["product_category_slug"] as string;
+            var paramProduct = new GetListProductParamDto { 
+                CategorySlug = productCategorySlug ?? ""
+            };
 
             var data =await this.useCase.Execute(paramProduct);
-            return RenderViewComponent("Product", param.ComponentName + type, data);
+            data.Component = param;
+            return RenderViewComponent("Product", componentView ?? "ProductType1", data);
         }
     }
 }

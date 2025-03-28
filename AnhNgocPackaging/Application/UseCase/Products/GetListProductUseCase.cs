@@ -15,20 +15,10 @@ namespace AnhNgocPackaging.Application.UseCase.Products
         }
         public async Task<ListProductResultDto> Execute(GetListProductParamDto param)
         {
-            var dataReturnException = new ListProductResultDto { Errors = new List<ErrorResponseDto>() };
+             var dataReturnException = new ListProductResultDto { Errors = new List<ErrorResponseDto>() };
             try
             {
-
                 var filter = Builders<ProductEntity>.Filter.Empty;
-
-                if (param.Type != null)
-                {
-                    filter = Builders<ProductEntity>.Filter.And(
-                        filter,
-                        Builders<ProductEntity>.Filter.AnyEq(x => x.Types, param.Type.Value)
-                    );
-                }
-
                 if (!string.IsNullOrEmpty(param.Search))
                 {
                     var exactPhrase = $"\"{param.Search}\"";

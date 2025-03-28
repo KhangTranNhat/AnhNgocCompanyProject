@@ -34,9 +34,9 @@ namespace AnhNgocPackaging.Presentation.Client.PageOnline
 
         [HttpGet, ActionName("ProductDetail")]
         [Route("san-pham-bao-bi/{slug}")]
-        public IActionResult ProductDetailPage(string slug)
+        public IActionResult ProductDetailPage(GetProductParamDto param)
         {
-            return RenderPageView("ProductDetail");
+            return RenderPageView("ProductDetail", param);
         }
 
         [HttpGet, ActionName("News")]

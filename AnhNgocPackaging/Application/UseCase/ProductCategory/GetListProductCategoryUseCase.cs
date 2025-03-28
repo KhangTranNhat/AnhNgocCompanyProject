@@ -16,7 +16,7 @@ namespace AnhNgocPackaging.Application.UseCase.ProductCategory
             var dataReturnException = new ListProductCategoryResultDto { Errors = new List<ErrorResponseDto>() };
             try
             {
-                var productCategories = await this.productCategoryCollection.Find(FilterDefinition<ProductCategoryEntity>.Empty).ToListAsync();
+                var productCategories = await this.productCategoryCollection.Find(x=> x.IsMenu == true).ToListAsync();
                 var categoryDtos = productCategories.Select(c => new ItemListProductCategoryResultDto
                 {
                     Id = c.Id,

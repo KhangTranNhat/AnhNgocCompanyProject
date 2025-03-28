@@ -19,7 +19,7 @@
 
         [BsonElement("product_category_ids")]
         [BsonRepresentation(BsonType.ObjectId)]
-        public List<string>? ProductCategoryIds { get; set; } = null;
+        public List<string> ProductCategoryIds { get; set; } = new List<string>();
 
         [BsonElement("price")]
         public string Price { get; set; } = string.Empty;
@@ -38,9 +38,5 @@
 
         [BsonElement("content")]
         public string Content { get; set; } = string.Empty;
-
-        [BsonElement("types")]
-        [BsonRepresentation(BsonType.String)]
-        public List<ProductType> Types { get; set; } = new List<ProductType>();
     }
 }

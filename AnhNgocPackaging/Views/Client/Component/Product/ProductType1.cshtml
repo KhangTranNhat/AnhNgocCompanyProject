@@ -1,16 +1,18 @@
 ﻿@model ListProductResultDto;
 @{
-
+    var component = Model.Component;
+    var content = component.Content;
+    var categorySlug = component.Extra["product_category_slug"] as string;
 }
 
 <section class="shop-section section-padding fix pt-0">
     <div class="container">
         <div class="section-title-area">
             <div class="section-title">
-                <h2 class="wow fadeInUp" data-wow-delay=".3s">Top Category Books</h2>
+                <h2 class="wow fadeInUp" data-wow-delay=".3s">@content.Title</h2>
             </div>
-            <a href="shop.html" class="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s">
-                Explore More <i class="fa-solid fa-arrow-right-long"></i>
+            <a asp-controller="PageOnline" asp-action="Product" asp-route-danh-muc="@categorySlug" class="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s">
+                @content.ButtonText <i class="fa-solid fa-arrow-right-long"></i>
             </a>
         </div>
         <div class="swiper book-slider">
@@ -21,27 +23,27 @@
                         <div class="shop-box-items style-2">
                             <div class="book-thumb center">
                                 <a asp-action="ProductDetail" asp-controller="PageOnline" asp-route-slug="@item.Slug"><img src="@item.Image" alt="img"></a>
-                                @*  <ul class="post-box">
+                               @*<ul class="post-box">
                                     <li>
                                         Hot
                                     </li>
                                     <li>
                                         -30%
                                     </li>
-                                </ul>
+                                </ul>*@ 
                                 <ul class="shop-icon d-grid justify-content-center align-items-center">
                                     <li>
-                                        <a href="shop-cart.html"><i class="far fa-heart"></i></a>
+                                        <a ><i class="far fa-heart"></i></a>
                                     </li>
                                     <li>
-                                        <a href="shop-cart.html">
+                                        <a >
                                             <img class="icon" src="~/images/icon/shuffle.svg" alt="svg-icon">
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="shop-details.html"><i class="far fa-eye"></i></a>
+                                        <a ><i class="far fa-eye"></i></a>
                                     </li>
-                                </ul>*@
+                                </ul>
                                 <div class="shop-button">
                                     <a asp-action="ProductDetail" asp-controller="PageOnline" asp-route-slug="@item.Slug" class="theme-btn">
                                         <i class="fa-solid fa-basket-shopping"></i> Xem chi tiết

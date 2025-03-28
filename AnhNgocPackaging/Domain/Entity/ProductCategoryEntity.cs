@@ -24,5 +24,8 @@
 
         [BsonElement("total_product")]
         public int TotalProduct { get; set; }
+
+        [BsonElement("is_menu")]
+        public bool IsMenu { get; set; }
     }
 }

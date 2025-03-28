@@ -2,8 +2,6 @@
 {
     public class GetListProductParamDto : PagingRequestDto
     {
-        public ProductType? Type { get; set; } = null;
-
         [FromQuery(Name = "search")]
         public string Search { get; set; } = string.Empty;
 

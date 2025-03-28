@@ -2,16 +2,15 @@
 {
     public class ProductDetailViewComponent : BaseClientViewComponentOnline
     {
-        private readonly IGetListProductUseCase useCase;
-        public ProductDetailViewComponent(IGetListProductUseCase useCase)
+        private readonly IGetProductDetailUseCase useCase;
+        public ProductDetailViewComponent(IGetProductDetailUseCase useCase)
         {
             this.useCase = useCase;
         }
-        public  Task<IViewComponentResult> InvokeAsync()
+        public async  Task<IViewComponentResult> InvokeAsync(GetProductParamDto param)
         {
-           
-            //var data = await this.useCase.Execute(null);
-            return Task.FromResult(RenderViewComponent("Product", "ProductDetail"));
+            var data = await this.useCase.Execute(param);
+            return RenderViewComponent("Product", "ProductDetail");
         }
     }
 }

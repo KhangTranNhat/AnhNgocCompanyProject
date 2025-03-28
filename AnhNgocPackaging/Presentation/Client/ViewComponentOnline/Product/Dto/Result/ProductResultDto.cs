@@ -1,11 +1,6 @@
 ﻿namespace AnhNgocPackaging.Presentation.Client.ViewComponentOnline.Product.Dto.Result
 {
-    public class ListProductResultDto : PagingResponseDto
-    {
-        public IEnumerable<ItemListProductResultDto> Items { get; set; } = Enumerable.Empty<ItemListProductResultDto>();
-        public ComponentResultDto Component { get; set; } = new ComponentResultDto();
-    }
-    public class ItemListProductResultDto 
+    public class ProductResultDto : BaseResponseDto
     {
         public string Id { get; set; } = string.Empty;
         public string ProductCategoryId { get; set; } = string.Empty;
